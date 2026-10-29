@@ -59,33 +59,44 @@ connectatel-customer-usage-analysis/
     └── plans.csv
 
 ## Cómo ejecutar el notebook en Google Colab
-1. Descarga o clona este repositorio.
-2. Abre Google Colab.
-3. Selecciona Archivo > Subir notebook y abre connectatel-customer-usage-analysis.ipynb desde la carpeta notebooks/.
-4. En el panel lateral Archivos de Google Colab, selecciona Subir y carga estos tres archivos de datos obligatorios desde la carpeta data/ del repositorio:
-   - users_latam.csv: información de los clientes (edad, ciudad, plan y fechas de registro o baja).
-   - usage.csv: registros de llamadas y mensajes (tipo de actividad, duración y fecha).
-   - plans.csv: características, beneficios y tarifas de los planes comerciales.
-     Los tres archivos deben estar cargados antes de ejecutar las celdas de lectura de datos.
-5. Si los archivos se cargaron en /content/, usa rutas como estas:
 
-import pandas as pd
+El análisis de ConnectaTel puede ejecutarse directamente en Google Colab sin necesidad de descargar el repositorio ni cargar manualmente los archivos CSV.
 
-users = pd.read_csv('/content/users_latam.csv')
-usage = pd.read_csv('/content/usage.csv')
-plans = pd.read_csv('/content/plans.csv')
+**[Abrir notebook de ConnectaTel en Google Colab](https://colab.research.google.com/github/Yidibe/connectatel-customer-usage-analysis/blob/main/notebooks/connectatel-customer-usage-analysis.ipynb)**
 
-6. Ejecuta las celdas en orden, desde la importación de librerías hasta las conclusiones ejecutivas, mediante Entorno de ejecución > Ejecutar todo.
-Nota: los archivos cargados directamente en una sesión de Colab pueden desaparecer al reiniciar el entorno; vuelve a subirlos si es necesario.
+### Instrucciones de ejecución
+
+1. Haz clic en el enlace anterior para abrir el notebook desde GitHub.
+2. En Google Colab, selecciona **Runtime → Run all** (Entorno de ejecución → Ejecutar todas).
+3. Espera a que finalice la ejecución de las celdas.
+4. Revisa los resultados de limpieza, estadísticas descriptivas, histogramas, boxplots, detección de outliers, segmentación de clientes y conclusiones ejecutivas.
+
+### Carga de datos
+
+El notebook utiliza tres datasets almacenados en la carpeta `data/` del repositorio:
+
+- `users_latam.csv`: 4,000 registros de clientes.
+- `usage.csv`: 40,000 registros de llamadas y mensajes.
+- `plans.csv`: información de los dos planes comerciales, Básico y Premium.
+
+Los archivos se cargan directamente desde GitHub mediante `pandas.read_csv()`, utilizando las URL públicas de los datasets.
+
+No es necesario descargarlos ni cargarlos manualmente.
 
 ## Guía breve de reproducción
-1. Verifica que los archivos CSV estén disponibles y que sus rutas coincidan con las del notebook.
-2. Ejecuta la exploración inicial y comprueba que los archivos contengan 4,000 clientes, 40,000 registros de uso y 2 planes.
-3. Ejecuta las transformaciones de limpieza y la agregación por user_id.
-4. Genera las estadísticas descriptivas, histogramas y boxplots.
-5. Recalcula los límites IQR y las segmentaciones, y compara los resultados con los hallazgos documentados.
-6. Revisa las conclusiones ejecutivas y confirma que correspondan a los resultados obtenidos.
 
+Para reproducir el análisis:
+
+1. Abrir el notebook desde el enlace de Google Colab.
+2. Ejecutar todas las celdas en orden.
+3. Verificar la carga de los tres datasets y las transformaciones de limpieza.
+4. Revisar las estadísticas descriptivas y las distribuciones de edad, mensajes, llamadas y minutos acumulados.
+5. Examinar los histogramas y boxplots para identificar patrones de consumo y valores atípicos.
+6. Verificar los límites calculados mediante el método IQR y las decisiones sobre el tratamiento de outliers.
+7. Revisar la segmentación de clientes por edad y nivel de uso.
+8. Consultar el análisis ejecutivo y las recomendaciones comerciales.
+
+**Validación de reproducibilidad:** El notebook fue ejecutado completamente en Google Colab utilizando los datasets publicados en GitHub, sin presentar errores.
 ## Próximos pasos
 Contrastar los segmentos con las características de los planes Básico y Premium, analizar el consumo mensual y evaluar ingresos, costos y retención para fundamentar futuras decisiones comerciales.
 
